@@ -1,0 +1,8 @@
+---
+Name: robotsroute
+Before: '#modelascontrollerroutes'
+After: '#rootroutes'
+---
+Director:
+  rules:
+    'robots.txt': 'Robots'
