@@ -1,7 +1,5 @@
 ---
 Name: robotsroute
-Before: '#modelascontrollerroutes'
-After: '#rootroutes'
 ---
 Director:
   rules:
