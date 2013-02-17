@@ -1,5 +1,5 @@
 {
-    "name": "tractorcow/robots",
+    "name": "tractorcow/silverstripe-robots",
     "description": "Simple robots generation module for Silverstripe",
     "type": "silverstripe-module",
     "keywords": ["silverstripe", "robots"],
@@ -9,8 +9,14 @@
             "email": "damian.mooyman@gmail.com"
         }
     ],
+    "support": {
+        "issues": "http://github.com/tractorcow/silverstripe-robots/issues"
+    },
     "require": {
 	"silverstripe/framework": "3.*",
 	"composer/installers": "*"
+    },
+    "extra": {
+        "installer-name": "robots"
     }
 }
