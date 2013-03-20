@@ -1,0 +1,5 @@
+Robots:
+  enabled: true
+  disallowedUrls:
+    - '/admin'
+  allowedUrls: []
