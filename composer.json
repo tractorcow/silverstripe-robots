@@ -21,6 +21,6 @@
 		"installer-name": "robots"
 	},
 	"suggest": {
-		"silverstripe-labs/googlesitemaps": "Ensures that a valid sitemap.xml is generated and referenced within robots.txt"
+		"silverstripe/googlesitemaps": "Ensures that a valid sitemap.xml is generated and referenced within robots.txt"
 	}
 }
