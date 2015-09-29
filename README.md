@@ -49,7 +49,7 @@ Robots:
 ```
 
 Also by default, any page with 'ShowInSearch' set to false will also be excluded. This
-can be useful for hiding auxilary pages like "thanks for signing up", or error pages.
+can be useful for hiding auxiliary pages like "thanks for signing up", or error pages.
 
 You can turn this off (if you really absolutely think you need to) using the below
 
