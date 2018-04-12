@@ -18,6 +18,8 @@ as it's designed to cater to the 99.9% of cases which won't require manual confi
 
  * SilverStripe 3 or above
  * PHP 5.3
+ 
+For SilverStripe 4 check out [https://github.com/gorriecoe/silverstripe-robots](silverstripe-robots) by @gorriecoe
 
 ## Installation Instructions
 
