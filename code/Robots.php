@@ -100,7 +100,7 @@ class Robots extends Controller {
 		if (Robots::config()->disallow_unsearchable) {
 			$unsearchablePages = SiteTree::get()->where('"SiteTree"."ShowInSearch" = 0');
 			foreach ($unsearchablePages as $page) {
-				$link = $page->Link();
+				$link = $page->RelativeLink();
 				// Don't disallow home page
 				if ($link !== '/') $urls[] = $link;
 			}
