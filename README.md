@@ -37,7 +37,7 @@ You can add a page or pattern to be blocked by adding it to the disallowedUrls c
 ---
 Name: myrobotsconfiguration
 ---
-Robots:
+TractorCow\Robots\Robots:
   disallowed_urls:
     - 'mysecretpage.html'
     - '_private'
@@ -52,9 +52,8 @@ You can turn this off (if you really absolutely think you need to) using the bel
 ```yaml
 ---
 Name: myrobotsconfiguration
-After: '#robotsconfiguration'
 ---
-Robots:
+TractorCow\Robots\Robots:
   disallow_unsearchable: false
 ```
 
@@ -65,9 +64,8 @@ using the below configuration.
 ```yaml
 ---
 Name: myrobotsconfiguration
-After: '#robotsconfiguration'
 ---
-Robots:
+TractorCow\Robots\Robots:
   sitemap: '/sitemap_index.xml'
 ```
 
