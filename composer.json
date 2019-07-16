@@ -19,10 +19,7 @@
     "autoload": {
         "psr-4": {
             "TractorCow\\Robots\\": "src/"
-        },
-        "files": [
-            "src/includes/constants.php"
-        ]
+        }
     },
     "require": {
         "silverstripe/framework": "^4"
