@@ -1,9 +1,0 @@
----
-Name: robotsconfiguration
----
-Robots:
-  sitemap: '/sitemap.xml'
-  disallow_unsearchable: true
-  disallowed_urls:
-    - '/admin'
-  allowed_urls: []

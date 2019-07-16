@@ -1,16 +1,55 @@
 <?php
 
+namespace TractorCow\Robots;
+
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Control\RequestHandler;
+use Wilr\GoogleSitemaps\GoogleSitemap;
+
 /**
  * Provides robots.txt functionality
- * 
+ *
  * @author Damian Mooyman
  */
-class Robots extends Controller
+class Robots extends RequestHandler
 {
+    /**
+     * Path to sitemap.xml to look for
+     *
+     * @var string
+     */
+    private static $sitemap = 'sitemap.xml';
+
+    /**
+     * Hide unsearchable pages
+     *
+     * @var bool
+     */
+    private static $disallow_unsearchable = true;
+
+    /**
+     * List of disallowed urls
+     *
+     * @var array
+     */
+    private static $disallowed_urls = [
+        '/admin',
+        '/dev',
+    ];
+
+    /**
+     * List of allowed urls
+     *
+     * @config
+     * @var array
+     */
+    private static $allowed_urls = [];
 
     /**
      * Determines if this is a public site
-     * 
+     *
      * @return boolean flag indicating if this robots is for a public site
      */
     protected function isPublic()
@@ -20,8 +59,8 @@ class Robots extends Controller
 
     /**
      * Generates the response containing the robots.txt content
-     * 
-     * @return SS_HTTPResponse
+     *
+     * @return HTTPResponse
      */
     public function index()
     {
@@ -31,32 +70,31 @@ class Robots extends Controller
         $text .= $this->renderDisallow();
         $text .= $this->renderAllow();
 
-        $response = new SS_HTTPResponse($text, 200);
+        $response = new HTTPResponse($text, 200);
         $response->addHeader("Content-Type", "text/plain; charset=\"utf-8\"");
         return $response;
     }
 
     /**
      * Renders the sitemap link reference
-     * 
+     *
      * @return string
      */
     protected function renderSitemap()
     {
-
         // No sitemap if not public
         if (!$this->isPublic()) {
             return '';
         }
 
         // Check if sitemap is configured
-        $sitemap = Robots::config()->sitemap;
+        $sitemap = static::config()->get('sitemap');
         if (empty($sitemap)) {
             return '';
         }
 
         // Skip sitemap if not available
-        if (!class_exists('GoogleSitemap') && !Director::fileExists($sitemap)) {
+        if (!class_exists(GoogleSitemap::class) && !Director::fileExists($sitemap)) {
             return '';
         }
 
@@ -66,7 +104,7 @@ class Robots extends Controller
 
     /**
      * Renders the list of disallowed pages
-     * 
+     *
      * @return string
      */
     protected function renderDisallow()
@@ -81,7 +119,7 @@ class Robots extends Controller
 
     /**
      * Renders the list of allowed pages, if any
-     * 
+     *
      * @return string
      */
     protected function renderAllow()
@@ -95,25 +133,26 @@ class Robots extends Controller
 
     /**
      * Returns an array of disallowed URLs
-     * 
+     *
      * @return array
      */
     protected function disallowedUrls()
     {
-
         // If not public, disallow all
         if (!$this->isPublic()) {
             return array("/");
         }
 
         // Get configured disallowed urls
-        $urls = (array) Robots::config()->disallowed_urls;
+        $urls = (array)static::config()->get('disallowed_urls');
 
         // Add all pages where ShowInSearch is false
-        if (Robots::config()->disallow_unsearchable) {
-            $unsearchablePages = SiteTree::get()->where('"SiteTree"."ShowInSearch" = 0');
+        if (static::config()->get('disallow_unsearchable')) {
+            /** @var SiteTree[] $unsearchablePages */
+            $unsearchablePages = SiteTree::get()->filter(['ShowInSearch' => false]);
             foreach ($unsearchablePages as $page) {
                 $link = $page->Link();
+
                 // Don't disallow home page
                 if ($link !== '/') {
                     $urls[] = $link;
@@ -126,11 +165,11 @@ class Robots extends Controller
 
     /**
      * Returns an array of allowed URLs
-     * 
+     *
      * @return array
      */
     protected function allowedUrls()
     {
-        return (array) Robots::config()->allowed_urls;
+        return (array)static::config()->get('allowed_urls');
     }
 }

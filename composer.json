@@ -1,26 +1,38 @@
 {
-	"name": "tractorcow/silverstripe-robots",
-	"description": "Simple robots generation module for Silverstripe",
-	"type": "silverstripe-module",
-	"keywords": ["silverstripe", "robots"],
-	"license": "BSD-3-Clause",
-	"authors": [
-		{
-			"name": "Damian Mooyman",
-			"email": "damian.mooyman@gmail.com"
-		}
-	],
-	"support": {
-		"issues": "http://github.com/tractorcow/silverstripe-robots/issues"
-	},
-	"require": {
-		"silverstripe/framework": "3.*",
-		"composer/installers": "*"
-	},
-	"extra": {
-		"installer-name": "robots"
-	},
-	"suggest": {
-		"silverstripe/googlesitemaps": "Ensures that a valid sitemap.xml is generated and referenced within robots.txt"
-	}
+    "name": "tractorcow/silverstripe-robots",
+    "description": "Simple robots generation module for Silverstripe",
+    "type": "silverstripe-vendormodule",
+    "keywords": [
+        "silverstripe",
+        "robots"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Damian Mooyman",
+            "email": "damian.mooyman@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "http://github.com/tractorcow/silverstripe-robots/issues"
+    },
+    "autoload": {
+        "psr-4": {
+            "TractorCow\\Robots\\": "src/"
+        },
+        "files": [
+            "src/includes/constants.php"
+        ]
+    },
+    "require": {
+        "silverstripe/framework": "^4"
+    },
+    "suggest": {
+        "silverstripe/googlesitemaps": "Ensures that a valid sitemap.xml is generated and referenced within robots.txt"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.x-dev"
+        }
+    }
 }

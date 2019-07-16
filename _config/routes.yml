@@ -1,6 +1,6 @@
 ---
 Name: robotsroute
 ---
-Director:
+SilverStripe\Control\Director:
   rules:
-    'robots.txt': 'Robots'
+    'robots.txt': 'TractorCow\Robots\Robots'
