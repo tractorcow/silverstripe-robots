@@ -140,7 +140,7 @@ class Robots extends RequestHandler
     {
         // If not public, disallow all
         if (!$this->isPublic()) {
-            return array("/");
+            return ["/"];
         }
 
         // Get configured disallowed urls
@@ -150,6 +150,11 @@ class Robots extends RequestHandler
         if (static::config()->get('disallow_unsearchable')) {
             /** @var SiteTree[] $unsearchablePages */
             $unsearchablePages = SiteTree::get()->filter(['ShowInSearch' => false]);
+
+            if (class_exists('SilverStripe\CMS\Model\RedirectorPage')) {
+                $unsearchablePages = $unsearchablePages->exclude('ClassName', 'SilverStripe\CMS\Model\RedirectorPage');
+            }
+
             foreach ($unsearchablePages as $page) {
                 $link = $page->Link();
 
