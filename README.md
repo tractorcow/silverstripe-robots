@@ -16,7 +16,7 @@ as it's designed to cater to the 99.9% of cases which won't require manual confi
 
 ## Requirements
 
- * SilverStripe 4 or above
+ * Silverstripe 4 or above
 
 ## Installation Instructions
 
