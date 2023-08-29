@@ -164,7 +164,7 @@ class Robots extends RequestHandler
                 }
             }
         }
-
+        $this->extend('updateDisallowedUrls', $urls);
         return array_unique($urls);
     }
 
