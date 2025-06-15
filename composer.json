@@ -22,14 +22,14 @@
         }
     },
     "require": {
-        "silverstripe/framework": "^4 || ^5"
+        "silverstripe/framework": "^6"
     },
     "suggest": {
         "silverstripe/googlesitemaps": "Ensures that a valid sitemap.xml is generated and referenced within robots.txt"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.x-dev"
+            "dev-master": "5.x-dev"
         }
     }
 }

@@ -16,14 +16,14 @@ as it's designed to cater to the 99.9% of cases which won't require manual confi
 
 ## Requirements
 
- * Silverstripe 4 or above
+ * Silverstripe 6
 
 ## Installation Instructions
 
  * Extract all files into the 'robots' folder under your Silverstripe root, or install using composer
 
 ```bash
-composer require "tractorcow/silverstripe-robots": "^4"
+composer require "tractorcow/silverstripe-robots": "^5"
 ```
 
  * Make sure you are correctly setting your environment for it to work properly
